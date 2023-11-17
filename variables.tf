@@ -13,6 +13,10 @@ variable "notification_arn" {
   description = "SNS Topic to send notifications to"
   type        = string
 }
+variable "dlq_arn" {
+  description = "sqs queue for failed event invocations"
+  type        = string
+}
 
 variable "tags" {
   default     = {}
