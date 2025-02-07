@@ -1,6 +1,7 @@
 resource "aws_guardduty_detector" "this" {
   enable                       = var.guardduty_enabled
   finding_publishing_frequency = var.finding_publishing_frequency
+  tags                         = var.tags
 }
 
 resource "aws_cloudwatch_event_rule" "this" {
