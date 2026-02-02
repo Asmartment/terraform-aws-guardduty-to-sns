@@ -14,7 +14,7 @@ resource "aws_cloudwatch_event_rule" "this" {
 {
   "source": [
     "aws.guardduty"
-  ]
+  ],
   "detail.severity":[ { "numeric": [ ">", 4] } ]
 }
 PATTERN
