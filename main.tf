@@ -31,9 +31,10 @@ resource "aws_cloudwatch_event_target" "this" {
 
 
 resource "aws_cloudwatch_metric_alarm" "FailedInvocation" {
-  alarm_name = "gaurd-duty-event-failed"
+  alarm_name = "guard-duty-event-failed"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods = 1
+  threshold = 1
   metric_query {
     id = "m1"
     metric {
