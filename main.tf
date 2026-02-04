@@ -30,25 +30,3 @@ resource "aws_cloudwatch_event_target" "this" {
 }
 
 
-resource "aws_cloudwatch_metric_alarm" "FailedInvocation" {
-  alarm_name = "guard-duty-event-failed"
-  comparison_operator = "GreaterThanOrEqualToThreshold"
-  evaluation_periods = 1
-  threshold = 1
-  metric_query {
-    id = "m1"
-    metric {
-      metric_name = "FailedInvocations"
-      namespace = "AWS/Events"
-      period = 3600
-      stat = "Sum"
-      unit = "Count"
-      dimensions = {
-          RuleName = aws_cloudwatch_event_rule.this.name
-      }
-    }
-  }
-  alarm_description = "Guard Duty Finding Event rule failed to invoke. This is only informational. Failed are routed to SQS DLQ and finally to this slack channel"
-  alarm_actions = [var.notification_arn]
-
-}
